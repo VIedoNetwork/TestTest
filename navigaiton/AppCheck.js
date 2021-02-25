@@ -27,10 +27,9 @@ const loopdata = (user) => {
 
 export default function checkRoleScreen() {
   const {user} = useContext(AuthContext);
-  const [Email, setEmail] = useState(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+
+
     const fetchData = async () => {
       try {
         await firestore()
@@ -47,18 +46,12 @@ export default function checkRoleScreen() {
               });
             });
           });
-
-        setEmail(list);
-        if (loading) {
-          setLoading(false);
-        }
       } catch (e) {
         console.log(e);
       }
     };
 
     fetchData();
-  }, []);
 
   loopdata(user);
 
